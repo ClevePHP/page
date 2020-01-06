@@ -47,7 +47,7 @@ class Limiagepage
     private $url = '';
 
     // 当前链接URL
-    private $nowPage = 1;
+    public $nowPage = 1;
 
     private $request;
 

@@ -16,6 +16,12 @@ class Pages
 
     private $request = null;
 
+    public $firstRow;
+
+    public $listRows;
+
+    public $pageNum;
+
     static public function getInstance()
     {
         if (! self::$instance instanceof self) {
@@ -35,6 +41,9 @@ class Pages
         if ($this->config->pageType == \ClevePHP\Extension\pager\Config::LIMIT_PAGE) {
             $object = (\ClevePHP\Extension\pager\Limiagepage::getInstance());
             $object->setRequest($this->config->request)->_init($this->config->dataCount, $this->config->listRows, $this->config->parameter);
+            $this->firstRow = $object->firstRow;
+            $this->listRows = $object->listRows;
+            $this->pageNum = $object->nowPage;
             if ($this->config->pageKeyValue) {
                 foreach ($object as $key => $value) {
                     $object->setConfig($key, $value);
